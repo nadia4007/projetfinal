@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Mon site web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="header">
+    <h1>Mon site web</h1>
+    <p>Un site web créé par moi.</p>
+    </div>
+
+    <div class="navbar">
+    <a href="Accueil.html">Accueil</a>
+    <a href="apropos.html">À propos</a>
+    <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="main">
+    <div class="sidebar">
+    <h3>Contact </h3>
+    <p>Contacter moi.</p>
+    </div>
+
+    <form method="post" action="" enctype="multipart/form-data">
+        <label for="pseudo">Pseudo *</label>
+        <input type="text" id="pseudo" name="pseudo" required><br>
+         
+        <label for="mdp">Mot de passe</label>
+        <input type="password" id="mdp" name="mdp"><br>
+         
+        <label for="prenom">Prenom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Votre prenom"><br>
+         
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required><br>
+        <small id="emailError" style="color: red;"></small> <!-- Placeholder pour afficher les erreurs -->
+
+         
+        <label for="avatar">Avatar</label>
+        <input type="file" id="avatar" name="avatar" multiple><br>
+         
+        <label for="Pays">Pays</label>
+        <select id="Pays" name="pays">
+            <optgroup label="Europe">
+                <option value="fr">France</option>
+                <option value="it">Italie</option>
+                <option value="es" selected>Espagne</option>
+            </optgroup>
+        </select><br>
+ 
+        <label for="choix">Quel sont vos fruits préférés ?</label>
+        <p><input type="checkbox" name="choix"> Orange
+        <input type="checkbox" name="choix"> Fraise
+        <input type="checkbox" name="choix"> Poire</p>
+         
+        <label for="civilite">Civilite</label>
+        <p><input type="radio" name="civilite" value="m" checked>Homme
+        <input type="radio" name="civilite" value="f">Femme</p>
+         
+        <label for="ville">Ville</label>
+        <input type="text" id="ville" name="ville" list="france">
+        <datalist id="france">
+            <option>Paris</option>
+            <option>Marseille</option>
+            <option>Lyon</option>
+        </datalist><br>
+
+        <input type="submit" value="valider">
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
+                var emailInput = document.getElementById('email');
+                var emailError = document.getElementById('emailError');
+                
+                // Vérifier si l'adresse e-mail est valide
+                if (!isValidEmail(emailInput.value)) {
+                    emailError.textContent = 'Veuillez saisir une adresse e-mail valide.';
+                    event.preventDefault(); // Empêcher l'envoi du formulaire si l'e-mail n'est pas valide
+                } else {
+                    emailError.textContent = ''; // Réinitialiser le message d'erreur
+                }
+            });
+    
+            // Fonction pour vérifier la validité de l'adresse e-mail
+            function isValidEmail(email) {
+                var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        </script>
+    </form>
+</body>
+</html>
+
